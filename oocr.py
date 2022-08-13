@@ -6,12 +6,13 @@ reader = easyocr.Reader(['ar'],gpu=False)
 img = cv2.imread("C:\\Users\\seife\\OneDrive\\Desktop\\plate numers\\plate car 2.webp")
 img2 = cv2.imread("C:\\Users\\seife\\OneDrive\\Desktop\\plate numers\\plate3.jpg")
 
-#crop image using opencv
+#filtring and noise removal image using opencv
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
 bfilter = cv2.bilateralFilter(gray,11,17,17)
 edged = cv2.Canny(bfilter,30,200)
 plt.subplot(1,4,1)
 plt.imshow(cv2.cvtColor(edged,cv2.COLOR_BGR2RGB) )
+#crop image 2
 cropped2  = img2[250:540,0:]
 plt.subplot(1,4,2)
 plt.imshow(cropped2)
