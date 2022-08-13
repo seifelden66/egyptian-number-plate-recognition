@@ -3,19 +3,21 @@ import cv2
 import csv
 from matplotlib import pyplot as plt
 reader = easyocr.Reader(['ar'],gpu=False)
-img = cv2.imread("C:\\Users\\seife\\OneDrive\\Desktop\\plate numers\\Egypt_-_License_Plate_-_Private_Cairo.png")
+img = cv2.imread("C:\\Users\\seife\\OneDrive\\Desktop\\plate numers\\plate car 2.webp")
 img2 = cv2.imread("C:\\Users\\seife\\OneDrive\\Desktop\\plate numers\\plate3.jpg")
 
 #crop image using opencv
-cropped  = img[110:250,0:500]
+gray = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+bfilter = cv2.bilateralFilter(gray,11,17,17)
+edged = cv2.Canny(bfilter,30,200)
 plt.subplot(1,4,1)
-plt.imshow(cropped )
+plt.imshow(cv2.cvtColor(edged,cv2.COLOR_BGR2RGB) )
 cropped2  = img2[250:540,0:]
 plt.subplot(1,4,2)
 plt.imshow(cropped2)
 
 #using ocr to detect characters
-results = reader.readtext(cropped,detail=True,paragraph=False)
+results = reader.readtext(gray,detail=True,paragraph=False)
 results2 = reader.readtext(cropped2,detail=True,paragraph=False)
 
 #filter the output
@@ -31,7 +33,5 @@ print (text2)
 with open ('fil.csv','w') as f:
     f.write(f"{text}\n") 
     f.write(f"{text2}\n") 
-
-   
 plt.show()   
 
