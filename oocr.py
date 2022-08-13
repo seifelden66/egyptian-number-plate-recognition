@@ -6,7 +6,7 @@ reader = easyocr.Reader(['ar'],gpu=False)
 img = cv2.imread("C:\\Users\\seife\\OneDrive\\Desktop\\plate numers\\plate car 2.webp")
 img2 = cv2.imread("C:\\Users\\seife\\OneDrive\\Desktop\\plate numers\\plate3.jpg")
 
-#filtring and noise removal image using opencv
+#filtring and noise removal image of image 1 using opencv
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
 bfilter = cv2.bilateralFilter(gray,11,17,17)
 edged = cv2.Canny(bfilter,30,200)
