@@ -28,10 +28,10 @@ for result in results:
 print (text)
 
 text2 = ''
-for result in results2:
-    text2 +=result[1]+' '
+for result2 in results2:
+    text2 +=result2[1]+' '
 print (text2)
-with open ('fil.csv','w') as f:
+with open ("C:\\Users\\seife\\OneDrive\\Desktop\\plate numers\\fil.csv",'w') as f:
     f.write(f"{text}\n") 
     f.write(f"{text2}\n") 
 plt.show()   
