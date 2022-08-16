@@ -1,1 +1,1 @@
-to read the csv output use notepad++
+to open and read the csv output correctly use notepad++
